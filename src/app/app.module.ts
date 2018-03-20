@@ -9,23 +9,21 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent,
-    ReactiveFormsModule
+    ProblemeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
