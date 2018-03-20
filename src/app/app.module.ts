@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
+import { ProblemeComponent } from './probleme/probleme.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
+    ProblemeComponent
   ],
   imports: [
     BrowserModule,
