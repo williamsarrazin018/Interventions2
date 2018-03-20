@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -8,12 +8,15 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
 import { ProblemeComponent } from './probleme/probleme.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent
+    ProblemeComponent,
+    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { ProblemeComponent } from './probleme/probleme.component';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
