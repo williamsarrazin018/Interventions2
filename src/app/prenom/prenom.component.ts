@@ -12,7 +12,7 @@ export class PrenomComponent implements OnInit {
 
   ngOnInit() {
     this.prenomForm = this.fb.group({
-      prenomValidator: ['', [Validators.minLength(3)]]
+      prenomValidator: ['', [Validators.minLength(3), Validators.nullValidator]]
     });
   }
 
