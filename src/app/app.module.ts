@@ -9,18 +9,21 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrenomComponent } from './prenom/prenom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent
+    ProblemeComponent,
+    PrenomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule
+
 
   ],
   providers: [],
