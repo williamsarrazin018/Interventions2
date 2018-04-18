@@ -7,28 +7,28 @@ describe('sansEspaces Validator', () => {
         let control = {value: ""};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(false);
+        expect(result['espace']).toBe(false);
     })
 
     it('chaine avec 10 espaces invalide', () => {
         let control = {value: "          "};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(false);
+        expect(result['espace']).toBe(false);
     })
 
     it('Phrase avec des mots valide', () => {
         let control = {value: "Bonjour et bonne journee"};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(true);
+        expect(result['espace']).toBe(true);
     })
 
     it('Phrase avec 3 espaces, des mots et ensuite 3 espaces est valide', () => {
         let control = {value: "   Bonjour bonne journee   "};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(true);
+        expect(result['espace']).toBe(true);
     })
 
 });
@@ -39,28 +39,28 @@ describe('longueurMinimum Validator', () => {
         let control = {value: " xx"};
         let validator = VerifierCaracteresValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(false);
+        expect(result['longueurMin']).toBe(false);
     })
 
     it('expression avec 2 espaces et 1 caractere invalide', () => {
         let control = {value: "  x"};
         let validator = VerifierCaracteresValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(false);
+        expect(result['longueurMin']).toBe(false);
     })
 
     it('expression avec 3 espaces et 3 caracteres valide', () => {
         let control = {value: "   aaa"};
         let validator = VerifierCaracteresValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(true);
+        expect(result['longueurMin']).toBe(true);
     })
 
     it('expression avec 5 espaces et 5 caracteres et 5 espaces valide', () => {
         let control = {value: " ab"};
         let validator = VerifierCaracteresValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['valide']).toBe(false);
+        expect(result['longueurMin']).toBe(false);
     })
 
 });
