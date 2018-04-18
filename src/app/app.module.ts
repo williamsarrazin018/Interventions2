@@ -10,6 +10,10 @@ import { RouterModule } from '@angular/router';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrenomComponent } from './prenom/prenom.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ProblemeData } from './probleme/categorie-data';
+import { CategorieService } from './probleme/categorie.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,13 @@ import { PrenomComponent } from './prenom/prenom.component';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(ProblemeData, {delay: 1000})
 
 
   ],
-  providers: [],
+  providers: [CategorieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
