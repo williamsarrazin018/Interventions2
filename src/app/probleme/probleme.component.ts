@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VerifierCaracteresValidator } from '../shared/caracteres-validator';
 
 @Component({
   selector: 'stk-probleme',
@@ -14,7 +15,7 @@ export class ProblemeComponent implements OnInit {
 
   ngOnInit() {
     this.problemeForm = this.fb.group({
-      prenom: ['', [Validators.minLength(3), Validators.required]]
+      prenom: ['', [VerifierCaracteresValidator.sansEspace, VerifierCaracteresValidator.longueurMinimum(3), Validators.required]]
       
     })
   }
