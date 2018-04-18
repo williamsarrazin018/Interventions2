@@ -32,3 +32,35 @@ describe('sansEspaces Validator', () => {
     })
 
 });
+
+describe('longueurMinimum Validator', () => {
+
+    it('expression avec 1 espace et 2 caracteres invalide', () => {
+        let control = {value: " xx"};
+        let validator = VerifierCaracteresValidator.longueurMinimum(3);
+        let result = validator(control as AbstractControl);
+        expect(result['valide']).toBe(false);
+    })
+
+    it('expression avec 2 espaces et 1 caractere invalide', () => {
+        let control = {value: "  x"};
+        let validator = VerifierCaracteresValidator.longueurMinimum(3);
+        let result = validator(control as AbstractControl);
+        expect(result['valide']).toBe(false);
+    })
+
+    it('expression avec 3 espaces et 3 caracteres valide', () => {
+        let control = {value: "   aaa"};
+        let validator = VerifierCaracteresValidator.longueurMinimum(3);
+        let result = validator(control as AbstractControl);
+        expect(result['valide']).toBe(true);
+    })
+
+    it('expression avec 5 espaces et 5 caracteres et 5 espaces valide', () => {
+        let control = {value: " ab"};
+        let validator = VerifierCaracteresValidator.longueurMinimum(3);
+        let result = validator(control as AbstractControl);
+        expect(result['valide']).toBe(false);
+    })
+
+});

@@ -11,4 +11,18 @@ export class VerifierCaracteresValidator {
            
         };
     }
+
+    static longueurMinimum(min: number): ValidatorFn {
+        return (c: AbstractControl): {[key: string]: boolean } | null => {
+           
+            let stringPrenom = (c.value || '').trim();
+           
+            if (stringPrenom.length >= min) {
+                return {'valide': true};
+            } else {
+                return {'valide': false};
+            }
+           
+        };
+    }
 }
