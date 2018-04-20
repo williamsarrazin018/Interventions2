@@ -4,9 +4,9 @@ export class VerifierCaracteresValidator {
     static sansEspace(): ValidatorFn {
         return (c: AbstractControl): {[key: string]: boolean } | null => {
             if ((c.value || '').trim().length === 0) {
-                return {'valide': false};
+                return {'espace': false};
             } else {
-                return {'valide': true};
+                return {'espace': true};
             }
            
         };
@@ -18,9 +18,9 @@ export class VerifierCaracteresValidator {
             let stringPrenom = (c.value || '').trim();
            
             if (stringPrenom.length >= min) {
-                return {'valide': true};
+                return {'longueurMin': true};
             } else {
-                return {'valide': false};
+                return {'longueurMin': false};
             }
            
         };
