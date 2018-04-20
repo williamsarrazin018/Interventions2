@@ -1,19 +1,20 @@
+import { NgModule } from "@angular/core";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { ICategorie } from './categorie';
+import { ITypeProbleme } from "./typeprobleme";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class CategorieService {
+export class TypeProblemeService {
   private baseUrl = 'api/typesprobleme';
   
   constructor(private _http: HttpClient) { }
 
-  obtenirCategories(): Observable<ICategorie[]> {
-    return this._http.get<ICategorie[]>(this.baseUrl)
-        .do(data => console.log('obtenirCategories: ' + JSON.stringify(data)))
+  obtenirTypeProbleme(): Observable<ITypeProbleme[]> {
+    return this._http.get<ITypeProbleme[]>(this.baseUrl)
+        .do(data => console.log('obtenirTypeProbleme: ' + JSON.stringify(data)))
         .catch(this.handleError);
   }
 

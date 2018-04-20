@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgModule, ErrorHandler } from "@angular/core";
 
 @Component({
   selector: 'stk-root',

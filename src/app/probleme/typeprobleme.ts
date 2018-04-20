@@ -1,4 +1,4 @@
-export interface ICategorie {
+export interface ITypeProbleme {
     id: number;
     descriptionTypeProbleme: string;
 }

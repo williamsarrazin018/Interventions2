@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { TypeProblemeService } from './typeprobleme.service';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -9,9 +11,10 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, HttpClientModule],
       declarations: [ ProblemeComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [TypeProblemeService]
     })
     .compileComponents();
   }));

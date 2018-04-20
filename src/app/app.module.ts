@@ -11,8 +11,8 @@ import { ProblemeComponent } from './probleme/probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrenomComponent } from './prenom/prenom.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ProblemeData } from './probleme/categorie-data';
-import { CategorieService } from './probleme/categorie.service';
+import { ProblemeData } from './probleme/typeprobleme-data';
+import { TypeProblemeService } from './probleme/typeprobleme.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -28,11 +28,12 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(ProblemeData, {delay: 1000})
+    HttpClientInMemoryWebApiModule.forRoot(ProblemeData, {delay: 1000}),
+    HttpClientModule
 
 
   ],
-  providers: [CategorieService],
+  providers: [TypeProblemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
