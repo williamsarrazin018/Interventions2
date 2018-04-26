@@ -6,6 +6,7 @@ import { TypeProblemeService } from './typeprobleme.service';
 import { ITypeProbleme } from './typeprobleme';
 import { VerifierGroupboxValidator } from '../shared/groupbox-validator';
 import { NgModule, ErrorHandler } from "@angular/core";
+import { emailMatcherValidator } from '../shared/emailMatcher-validator';
 
 @Component({
   selector: 'stk-probleme',
@@ -44,6 +45,7 @@ export class ProblemeComponent implements OnInit {
     const courrielControl = this.problemeForm.get('courrielGroup.courriel');
     const courrielConfirmationControl = this.problemeForm.get('courrielGroup.courrielConfirmation');
     const telephoneControl = this.problemeForm.get('telephone');
+    const courrielGroupControl = this .problemeForm.get('courrielGroup');
     //Tout remettre à 0
 
     telephoneControl.clearValidators();
@@ -58,19 +60,25 @@ export class ProblemeComponent implements OnInit {
     courrielConfirmationControl.reset();
     courrielConfirmationControl.disable();
 
-    if (typeNotification === 'meNotifier') {
+    if (typeNotification === 'parCourriel') {
+        
       courrielControl.enable();
       courrielControl.setValidators([Validators.required]);
 
       courrielConfirmationControl.enable();
       courrielConfirmationControl.setValidators([Validators.required]);
 
+      courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents()]);
+
+      
+    } else if (typeNotification === 'parTelephone') {
       telephoneControl.enable();
       telephoneControl.setValidators([Validators.required]);
     }
     courrielControl.updateValueAndValidity();
     courrielConfirmationControl.updateValueAndValidity();
     telephoneControl.updateValueAndValidity();
+    courrielGroupControl.updateValueAndValidity();
   }
 
 }
