@@ -150,7 +150,6 @@ describe('ProblemeComponent', () => {
 
       errors = groupe.errors || {};
       expect(zone.valid).toBeFalsy();
-     // expect(errors['courrielsInvalides']).toBeTruthy();
 
     });
 
@@ -170,6 +169,18 @@ describe('ProblemeComponent', () => {
     });
 
     it('Zone ADRESSE COURRIEL est invalide avec un format non conforme', () => {
+      component.appliquerNotifications('parCourriel');
+      let errors = {};
+
+      let zone = component.problemeForm.get('courrielGroup.courriel');
+      let zone2 = component.problemeForm.get('courrielGroup.courrielConfirmation');
+      zone.setValue('aaamsn.com');
+      zone2.setValue('aaamsn.com');
+
+      let groupe = component.problemeForm.get('courrielGroup');
+
+      errors = groupe.errors || {};
+      expect(errors['courrielsInvalides']).toBeTruthy();
 
     });
 
@@ -185,15 +196,37 @@ describe('ProblemeComponent', () => {
       let groupe = component.problemeForm.get('courrielGroup');
 
       errors = groupe.errors || {};
-      expect(zone2.value).toBe(null);
+      expect(groupe.errors).toBe(null);
     });
 
     it('Zone ADRESSE COURRIEL avec valeur valide et Zone CONFIRMER COURRIEL sans valeur retourne null', () => {
+      component.appliquerNotifications('parCourriel');
+      let errors = {};
 
+      let zone = component.problemeForm.get('courrielGroup.courriel');
+      let zone2 = component.problemeForm.get('courrielGroup.courrielConfirmation');
+      zone.setValue('abc@def.ghi');
+      zone2.setValue('');
+
+      let groupe = component.problemeForm.get('courrielGroup');
+
+      errors = groupe.errors || {};
+      expect(groupe.errors).toBe(null);
     });
 
     it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont invalides si les valeurs sont différentes quand notifier par courriel', () => {
+      component.appliquerNotifications('parCourriel');
+      let errors = {};
 
+      let zone = component.problemeForm.get('courrielGroup.courriel');
+      let zone2 = component.problemeForm.get('courrielGroup.courrielConfirmation');
+      zone.setValue('abc@abc.com');
+      zone2.setValue('aaa@abc.com');
+
+      let groupe = component.problemeForm.get('courrielGroup');
+
+      errors = groupe.errors || {};
+      expect(errors['courrielsInvalides']).toBeTruthy();
     });
 
     it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont valides si les valeurs sont identiques quand notifier par courriel', () => {
@@ -202,8 +235,8 @@ describe('ProblemeComponent', () => {
 
       let zone = component.problemeForm.get('courrielGroup.courriel');
       let zone2 = component.problemeForm.get('courrielGroup.courrielConfirmation');
-      zone.setValue('aaa@abc.com');
-      zone2.setValue('aaa@abc.com');
+      zone.setValue('abc@abc.com');
+      zone2.setValue('abc@abc.com');      
 
       let groupe = component.problemeForm.get('courrielGroup');
 
