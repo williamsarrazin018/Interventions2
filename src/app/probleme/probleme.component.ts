@@ -7,6 +7,7 @@ import { ITypeProbleme } from './typeprobleme';
 import { VerifierGroupboxValidator } from '../shared/groupbox-validator';
 import { NgModule, ErrorHandler } from "@angular/core";
 import { emailMatcherValidator } from '../shared/emailMatcher-validator';
+import { telephoneValidator } from '../shared/telephone-validator';
 
 @Component({
   selector: 'stk-probleme',
@@ -26,11 +27,12 @@ export class ProblemeComponent implements OnInit {
       nom: ['', [VerifierCaracteresValidator.sansEspace(), VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       typeprobleme: ['', [VerifierGroupboxValidator.selectedType()]],
       notification:['Notifier'],
+      telephone: [{value: '', disabled: true}],
       courrielGroup: this.fb.group({
         courriel: [{value: '', disabled: true}],
         courrielConfirmation: [{value: '', disabled: true}],
         }),
-       telephone: [{value: '', disabled: true}],
+      
        
       
     });
@@ -71,9 +73,10 @@ export class ProblemeComponent implements OnInit {
       courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents()]);
 
       
-    } else if (typeNotification === 'parTelephone') {
+    } else if (typeNotification === 'parMessagerieTexte') {
       telephoneControl.enable();
-      telephoneControl.setValidators([Validators.required]);
+      telephoneControl.setValidators([Validators.minLength(10), Validators.maxLength(10), telephoneValidator.telephoneValide()]);
+
     }
     courrielControl.updateValueAndValidity();
     courrielConfirmationControl.updateValueAndValidity();
