@@ -41,6 +41,9 @@ export class ProblemeComponent implements OnInit {
     .subscribe(cat => this.typesprobleme = cat,
                error => this.errorMessage = <any>error);  
 
+    this.problemeForm.get('notification').valueChanges
+    .subscribe(value => this.appliquerNotifications(value));
+
   }
 
   appliquerNotifications(typeNotification: string): void {
@@ -62,6 +65,10 @@ export class ProblemeComponent implements OnInit {
     courrielConfirmationControl.reset();
     courrielConfirmationControl.disable();
 
+    courrielGroupControl.clearValidators();
+    courrielGroupControl.reset();
+    courrielGroupControl.disable();
+
     if (typeNotification === 'parCourriel') {
         
       courrielControl.enable();
@@ -70,12 +77,12 @@ export class ProblemeComponent implements OnInit {
       courrielConfirmationControl.enable();
       courrielConfirmationControl.setValidators([Validators.required]);
 
-      courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents()]);
+      courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents(), emailMatcherValidator.courrielFormat(), emailMatcherValidator.courrielConfirmationFormat(), emailMatcherValidator.courrielNull()]);
 
       
     } else if (typeNotification === 'parMessagerieTexte') {
       telephoneControl.enable();
-      telephoneControl.setValidators([Validators.minLength(10), Validators.maxLength(10), telephoneValidator.telephoneValide()]);
+      telephoneControl.setValidators([Validators.minLength(10), Validators.required, Validators.maxLength(10), telephoneValidator.telephoneValide()]);
 
     }
     courrielControl.updateValueAndValidity();

@@ -180,7 +180,7 @@ describe('ProblemeComponent', () => {
       let groupe = component.problemeForm.get('courrielGroup');
 
       errors = groupe.errors || {};
-      expect(errors['courrielsInvalides']).toBeTruthy();
+      expect(errors['courrielsInvalides1']).toBeTruthy();
 
     });
 
