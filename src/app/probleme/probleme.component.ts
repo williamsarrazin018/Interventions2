@@ -48,7 +48,7 @@ export class ProblemeComponent implements OnInit {
     const courrielConfirmationControl = this.problemeForm.get('courrielGroup.courrielConfirmation');
     const telephoneControl = this.problemeForm.get('telephone');
     const courrielGroupControl = this .problemeForm.get('courrielGroup');
-    //Tout remettre à 0
+    //Tout remettre à 
 
     telephoneControl.clearValidators();
     telephoneControl.reset();
