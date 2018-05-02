@@ -7,28 +7,28 @@ describe('sansEspaces Validator', () => {
         let control = {value: ""};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['espace']).toBe(false);
+        expect(result).toBe(null);
     })
 
     it('chaine avec 10 espaces invalide', () => {
         let control = {value: "          "};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['espace']).toBe(false);
+        expect(result).toBe(null);
     })
 
     it('Phrase avec des mots valide', () => {
         let control = {value: "Bonjour et bonne journee"};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['espace']).toBe(true);
+        expect(result['espace']).toBe(false);
     })
 
     it('Phrase avec 3 espaces, des mots et ensuite 3 espaces est valide', () => {
         let control = {value: "   Bonjour bonne journee   "};
         let validator = VerifierCaracteresValidator.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result['espace']).toBe(true);
+        expect(result['espace']).toBe(false);
     })
 
 });
@@ -53,7 +53,7 @@ describe('longueurMinimum Validator', () => {
         let control = {value: "   aaa"};
         let validator = VerifierCaracteresValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['longueurMin']).toBe(true);
+        expect(result).toBe(null);
     })
 
     it('expression avec 5 espaces et 5 caracteres et 5 espaces valide', () => {

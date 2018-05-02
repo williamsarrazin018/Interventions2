@@ -6,7 +6,7 @@ export class VerifierCaracteresValidator {
             if ((c.value || '').trim().length === 0) {
                 return {'espace': false};
             } else {
-                return {'espace': true};
+                return null;
             }
            
         };
@@ -18,7 +18,7 @@ export class VerifierCaracteresValidator {
             let stringPrenom = (c.value || '').trim();
            
             if (stringPrenom.length >= min) {
-                return {'longueurMin': true};
+                return null;
             } else {
                 return {'longueurMin': false};
             }

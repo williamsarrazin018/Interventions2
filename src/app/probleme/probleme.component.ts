@@ -26,23 +26,26 @@ export class ProblemeComponent implements OnInit {
       prenom: ['', [VerifierCaracteresValidator.sansEspace(), VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       nom: ['', [VerifierCaracteresValidator.sansEspace(), VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       typeprobleme: ['', [VerifierGroupboxValidator.selectedType()]],
-      notification:['Notifier'],
-      telephone: [{value: '', disabled: true}],
+      notification: ['Notifier'],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite: '',
+      dateProbleme: { value: Date(), disabled: true } ,
+      telephone: [{ value: '', disabled: true }],
       courrielGroup: this.fb.group({
-        courriel: [{value: '', disabled: true}],
-        courrielConfirmation: [{value: '', disabled: true}],
-        }),
-      
-       
-      
+        courriel: [{ value: '', disabled: true }],
+        courrielConfirmation: [{ value: '', disabled: true }],
+      }),
+
+
+
     });
 
     this.type.obtenirTypeProbleme()
-    .subscribe(cat => this.typesprobleme = cat,
-               error => this.errorMessage = <any>error);  
+      .subscribe(cat => this.typesprobleme = cat,
+      error => this.errorMessage = <any>error);
 
     this.problemeForm.get('notification').valueChanges
-    .subscribe(value => this.appliquerNotifications(value));
+      .subscribe(value => this.appliquerNotifications(value));
 
   }
 
@@ -50,7 +53,7 @@ export class ProblemeComponent implements OnInit {
     const courrielControl = this.problemeForm.get('courrielGroup.courriel');
     const courrielConfirmationControl = this.problemeForm.get('courrielGroup.courrielConfirmation');
     const telephoneControl = this.problemeForm.get('telephone');
-    const courrielGroupControl = this .problemeForm.get('courrielGroup');
+    const courrielGroupControl = this.problemeForm.get('courrielGroup');
     //Tout remettre à 
 
     telephoneControl.clearValidators();
@@ -70,7 +73,7 @@ export class ProblemeComponent implements OnInit {
     courrielGroupControl.disable();
 
     if (typeNotification === 'parCourriel') {
-        
+
       courrielControl.enable();
       courrielControl.setValidators([Validators.required]);
 
@@ -79,7 +82,7 @@ export class ProblemeComponent implements OnInit {
 
       courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents(), emailMatcherValidator.courrielFormat(), emailMatcherValidator.courrielConfirmationFormat(), emailMatcherValidator.courrielNull()]);
 
-      
+
     } else if (typeNotification === 'parMessagerieTexte') {
       telephoneControl.enable();
       telephoneControl.setValidators([Validators.minLength(10), Validators.required, Validators.maxLength(10), telephoneValidator.telephoneValide()]);
