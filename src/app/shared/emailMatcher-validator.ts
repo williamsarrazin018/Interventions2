@@ -16,6 +16,8 @@ export class emailMatcherValidator {
             
             if ((!/[a-z0-9._%+-]+@[a-z0-9.-]+/.test(c['controls'].courriel.value)) && c['controls'].courriel.value) {
                 return {'courrielsInvalides1' : true};
+            } else {
+                return null;
             }
 
 
@@ -28,6 +30,8 @@ export class emailMatcherValidator {
 
             if (!/[a-z0-9._%+-]+@[a-z0-9.-]+/.test(c['controls'].courrielConfirmation.value) && c['controls'].courrielConfirmation.value) {
                 return {'courrielsInvalides2' : true};
+            } else {
+                return null;
             }
 
         };
