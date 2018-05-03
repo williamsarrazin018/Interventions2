@@ -11,12 +11,12 @@
             <div class="col-md-10">
               <input class="form-control" id="prenom" type="text" placeholder="Prénom" formControlName="prenom" [ngClass]="{'is-valid': (problemeForm.get('prenom').touched || 
               problemeForm.get('prenom').dirty) &&
-              problemeForm.get('prenom').errors.longueurMin,
+              problemeForm.get('prenom').valid,
               'is-invalid': (problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) &&
-              !problemeForm.get('prenom').errors.longueurMin}" />
+              !problemeForm.get('prenom').valid}" />
               <span class="form-text" *ngIf="problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty && problemeForm.get('prenom').errors">
 
-                <span *ngIf="problemeForm.get('prenom').errors.required || !problemeForm.get('prenom').errors.espace">
+                <span *ngIf="problemeForm.get('prenom').errors.required || !problemeForm.get('prenom').errors">
                   <small class="text-muted">
                     Merci de saisir votre prénom.
                   </small>
@@ -35,17 +35,17 @@
             <div class="col-md-10">
               <input class="form-control" id="nom" type="text" placeholder="Nom" formControlName="nom" [ngClass]="{'is-valid': (problemeForm.get('nom').touched || 
             problemeForm.get('nom').dirty) &&
-            problemeForm.get('nom').errors.longueurMin,
+          problemeForm.get('nom').valid,
             'is-invalid': (problemeForm.get('nom').touched || problemeForm.get('nom').dirty) &&
-            !problemeForm.get('nom').errors.longueurMin}" />
-              <span class="form-text" *ngIf="problemeForm.get('nom').touched || problemeForm.get('nom').dirty && problemeForm.get('nom').errors">
+            !problemeForm.get('nom').valid}" />
+              <span class="form-text" *ngIf="problemeForm.get('nom').touched || problemeForm.geat('nom').dirty && problemeForm.get('nom').errors">
 
-                <span *ngIf="problemeForm.get('nom').errors.required || !problemeForm.get('nom').errors.espace">
+                <span *ngIf="problemeForm.get('nom').errors.required || problemeForm.get('nom').errors.espace">
                   <small class="text-muted">
                     Merci de saisir votre Nom.
                   </small>
                 </span>
-                <span *ngIf="!problemeForm.get('nom').errors.longueurMin">
+                <span *ngIf="problemeForm.get('nom').errors.longueurMin">
                   <small class="text-muted">
                     Veuillez entrer plus de caractères.
                   </small>

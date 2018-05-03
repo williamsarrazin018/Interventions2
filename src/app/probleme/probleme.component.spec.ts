@@ -42,7 +42,7 @@ describe('ProblemeComponent', () => {
       let zone = component.problemeForm.controls['prenom'];
       zone.setValue('a'.repeat(3));
       errors = zone.errors || {};
-      expect(errors['espace']).toBe(false);
+      expect(errors).toBeNull;
     });
   
     it('Zone PRENOM valide avec 200 caracteres', () => {
