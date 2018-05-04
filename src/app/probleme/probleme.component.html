@@ -56,13 +56,13 @@
           <div class="form-group row">
             <label for="typeProblemeID" class="col-md-2 col-form-label text-right">Type de problème : </label>
             <div class="col-sm-10">
-              <select class="form-control" id="typeProblemeID" formControlName="typeprobleme" [ngClass]="{'is-valid': (problemeForm.get('typeprobleme').errors.selectedType),
-            'is-invalid': (!problemeForm.get('typeprobleme').errors.selectedType)}">
+              <select class="form-control" id="typeProblemeID" formControlName="typeprobleme" [ngClass]="{'is-valid': (problemeForm.get('typeprobleme').valid),
+            'is-invalid': (!problemeForm.get('typeprobleme').valid)}">
                 <option value="">Sélectionner un type de problème</option>
                 <option *ngFor="let cat of typesprobleme" [value]="cat.id">{{cat.descriptionTypeProbleme}}</option>
               </select>
 
-              <span *ngIf="!problemeForm.get('typeprobleme').errors.selectedType ">
+              <span *ngIf="problemeForm.get('typeprobleme').errors != null && !problemeForm.get('typeprobleme').errors.selectedType">
                 <small class="text-muted">
                   Merci de sélectionner un type de problème.
                 </small>

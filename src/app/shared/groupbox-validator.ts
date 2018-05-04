@@ -6,7 +6,7 @@ export class VerifierGroupboxValidator {
             if (c.value.length === 0) {
                 return {'selectedType': false};
             } else {
-                return {'selectedType': true};
+                return null;
             }
            
         };

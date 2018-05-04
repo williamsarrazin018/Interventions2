@@ -6,11 +6,12 @@ export class telephoneValidator {
             
             if (!c.value) {
                 return {'telephoneInvalide' : true};
-            }
-            if (!/[0-9]+/.test(c.value)) {
+            } else if (!/[0-9]+/.test(c.value)) {
                 return {'telephoneInvalide' : true};
+            } else {
+                return null;
             }
-            return null;
+            
         };
     }
 
